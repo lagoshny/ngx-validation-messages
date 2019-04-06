@@ -27,24 +27,19 @@ export class NgxValidationMessagesService {
    * @returns string validation message
    */
   public getValidatorErrorMessages(validatorName: string, params?: object): string {
-
     const validationMessages = this.messagesConfig.messages;
     let validationMessage: string = validationMessages[validatorName];
 
     if (!validationMessage) {
-      throw new Error(`Validation message for validator: ${validatorName} cannot be found,
-                       please check validation message key for validator is case sensitive.`);
+      throw new Error('Validation message for validator: ' + validatorName
+        + ' cannot be found, please check validation message key for validator it is case sensitive.');
     }
 
-    // console.log('Contains params are ' + this.paramsRegExp.test(validationMessage));
-    if (this.paramsRegExp.test(validationMessage)) {
+    while (this.paramsRegExp.test(validationMessage)) {
       const foundParams = this.paramsRegExp.exec(validationMessage);
-      // console.log('Found params are ' + JSON.stringify(foundParams));
       foundParams.forEach(value => {
         const paramPlaceholder = value;
-        // console.log('Param to replace is ' + JSON.stringify(paramPlaceholder));
         value = value.replace('#{', '').replace('}', '');
-        // console.log('Param after replace is ' + JSON.stringify(value));
         validationMessage = validationMessage.replace(paramPlaceholder, this.getParameter(params, value));
       });
     }
