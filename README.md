@@ -7,7 +7,7 @@ This library allows you to decrease boilerplate code when handling validations e
 
 ### Installation
 ```
-npm install @p0ntiley/ngx-validation-messages --save
+npm install @lagoshny/ngx-validation-messages --save
 ```
 
 ### Configuration
@@ -15,7 +15,7 @@ To work with main `NgxValidationMessagesComponent` which decrease boilerplate va
 in the root application module import `NgxValidationMessagesModule`  passing configuration which contains  validation messages for validators:
 ```typescript
 // ...
-import { NgxValidationMessagesModule } from '@p0ntiley/ngx-validation-messages';
+import { NgxValidationMessagesModule } from '@lagoshny/ngx-validation-messages';
 
 @NgModule({
     imports: [
@@ -41,7 +41,7 @@ In other modules where you want to use `NgxValidationMessagesComponent`, you nee
 `NgxValidationMessagesModule`:
 ```typescript
 // ...
-import { NgxValidationMessagesModule } from '@p0ntiley/ngx-validation-messages';
+import { NgxValidationMessagesModule } from '@lagoshny/ngx-validation-messages';
 
 @NgModule({
     imports: [
@@ -85,7 +85,7 @@ Instead of this boilerplate code you can add `<ngx-validation-messages>` compone
          [(ngModel)]="user.firstName"
          name="firstName"
          #firstNameVar="ngModel"/>
-  <ngx-validation-messages [for]='firstNameVar'></<ngx-validation-messages>
+  <ngx-validation-messages [for]='firstNameVar'></ngx-validation-messages>
 ```
 
 #### 2. Form driven approach (reactive)
