@@ -1,7 +1,7 @@
 {
   "name": "@p0ntiley/ngx-validation-messages",
   "version": "1.0.0",
-  "description": "This module allows to simplify work with form validator validation messages using single component to display validation messages",
+  "description": "This module allows to simplify display form validator validation messages using single component.",
   "readme": "README.md",
   "author": "Ilya Lagoshny <ilya@lagoshny.ru>",
   "license": "MIT",
