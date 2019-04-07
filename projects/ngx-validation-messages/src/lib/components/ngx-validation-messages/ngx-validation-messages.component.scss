@@ -1,4 +1,4 @@
-.error_block {
+.ngx_vm__def_error_block {
   position: relative;
   display: inline-block;
   width: 100%;
@@ -10,7 +10,7 @@
   opacity: 0.8;
 }
 
-.error_block:before {
+.ngx_vm__def_error_block:before {
   content: '';
   width: 0;
   height: 0;
@@ -22,6 +22,6 @@
   left: 10px;
 }
 
-.error_label {
+.ngx_vm__def_error_label {
   color: white;
 }

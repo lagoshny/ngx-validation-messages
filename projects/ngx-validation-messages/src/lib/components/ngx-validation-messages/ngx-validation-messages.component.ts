@@ -1,7 +1,8 @@
-import { Component, ContentChildren, Input, QueryList } from '@angular/core';
+import { Component, ContentChildren, Inject, Input, QueryList } from '@angular/core';
 import { NgxValidatorNameDirective } from '../../directivies/ngx-validator-name.directive';
+import { NGX_VALIDATION_MESSAGES_CONFIG, NgxValidationMessagesConfig } from '../../interface/ngx-validation-messages.config';
 import { NgxValidationMessagesService } from '../../service/ngx-validation-messages.service';
-import { NgxCustomMessageComponent } from '../custom-message/ngx-custom-message.component';
+import { NgxCustomMessageComponent } from '../ngx-custom-message/ngx-custom-message.component';
 
 /**
  * Component for displaying validation messages, supports child components of type {@see NgxCustomMessageComponent}
@@ -37,7 +38,8 @@ export class NgxValidationMessagesComponent {
    */
   private defaultError = 'error';
 
-  constructor(private ngxValidationMessagesService: NgxValidationMessagesService) {
+  constructor(@Inject(NGX_VALIDATION_MESSAGES_CONFIG) public ngxValidationConfig: NgxValidationMessagesConfig,
+              private ngxValidationMessagesService: NgxValidationMessagesService) {
   }
 
   /**
@@ -81,8 +83,10 @@ export class NgxValidationMessagesComponent {
       if (!this.formControl.errors[msg.validatorName]) {
         return;
       }
-      const message = (msg instanceof NgxCustomMessageComponent)
+      let message = (msg instanceof NgxCustomMessageComponent)
         ? msg.message.nativeElement.innerText : msg.message;
+      message = this.ngxValidationMessagesService.expandParameterizedTemplateMessage(message, this.formControl.errors[msg.validatorName]);
+
       typeof this.formControl.errors[msg.validatorName] === 'object'
         ? this.formControl.errors[msg.validatorName].customMessage = message
         : this.formControl.errors[msg.validatorName] = {customMessage: message};

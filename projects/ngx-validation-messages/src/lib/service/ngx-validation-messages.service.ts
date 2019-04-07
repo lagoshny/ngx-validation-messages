@@ -11,9 +11,9 @@ export class NgxValidationMessagesService {
   public static SERVER_ERRORS = 'serverErrors';
 
   /**
-   * Regular expression to find params placeholder '#{paramName}'.
+   * Regular expression to find params placeholder '#[paramName]'.
    */
-  private paramsRegExp = new RegExp(/#{[a-zA-Z_\\-]*}/);
+  private paramsRegExp = new RegExp(/#[[a-zA-Z_\\-]*]/);
 
   constructor(@Inject(NGX_VALIDATION_MESSAGES_CONFIG) private messagesConfig: NgxValidationMessagesConfig) {
   }
@@ -28,23 +28,31 @@ export class NgxValidationMessagesService {
    */
   public getValidatorErrorMessages(validatorName: string, params?: object): string {
     const validationMessages = this.messagesConfig.messages;
-    let validationMessage: string = validationMessages[validatorName];
+    const validationMessage: string = validationMessages[validatorName];
 
     if (!validationMessage) {
       throw new Error('Validation message for validator: ' + validatorName
         + ' cannot be found, please check validation message key for validator it is case sensitive.');
     }
 
-    while (this.paramsRegExp.test(validationMessage)) {
-      const foundParams = this.paramsRegExp.exec(validationMessage);
-      foundParams.forEach(value => {
-        const paramPlaceholder = value;
-        value = value.replace('#{', '').replace('}', '');
-        validationMessage = validationMessage.replace(paramPlaceholder, this.getParameter(params, value));
-      });
+    if (params) {
+      return this.expandParameterizedTemplateMessage(validationMessage, params);
     }
 
     return validationMessage;
+  }
+
+  public expandParameterizedTemplateMessage(msg: string, params: object): string {
+    while (this.paramsRegExp.test(msg)) {
+      const foundParams = this.paramsRegExp.exec(msg);
+      foundParams.forEach(value => {
+        const paramPlaceholder = value;
+        value = value.replace('#[', '').replace(']', '');
+        msg = msg.replace(paramPlaceholder, this.getParameter(params, value));
+      });
+    }
+
+    return msg;
   }
 
   /**

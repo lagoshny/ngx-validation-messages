@@ -1,0 +1,13 @@
+<div [hidden]="true">
+  <ng-content></ng-content>
+</div>
+<div [ngClass]="ngxValidationConfig?.messagesStyle?.errorBlockClassNames || 'ngx_vm__def_error_block'"
+     *ngIf="errorMessages.length > 0">
+  <!--    <div *ngFor="let message of errorMessages; let i = index;">-->
+  <div *ngFor="let message of errorMessages">
+    <!--<br *ngIf="i > 0">-->
+    <span [ngClass]="ngxValidationConfig?.messagesStyle?.errorLabelClassNames || 'ngx_vm__def_error_label'">
+      {{ message }}
+    </span>
+  </div>
+</div>
