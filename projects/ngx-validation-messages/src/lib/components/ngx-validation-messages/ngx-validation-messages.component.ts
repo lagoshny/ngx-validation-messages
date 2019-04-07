@@ -5,8 +5,8 @@ import { NgxValidationMessagesService } from '../../service/ngx-validation-messa
 import { NgxCustomMessageComponent } from '../ngx-custom-message/ngx-custom-message.component';
 
 /**
- * Component for displaying validation messages, supports child components of type {@see NgxCustomMessageComponent}
- * and html elements with directive {@see NgxValidatorNameDirective} to override validation messages.
+ * Component for displaying validation messages, supports child components of type {@link NgxCustomMessageComponent}
+ * and html elements with directive {@link NgxValidatorNameDirective} to override validation messages.
  */
 @Component({
   selector: 'ngx-validation-messages',
@@ -16,19 +16,19 @@ import { NgxCustomMessageComponent } from '../ngx-custom-message/ngx-custom-mess
 export class NgxValidationMessagesComponent {
 
   /**
-   * Form control for which need show validation messages.
+   * Form control for which need to show validation messages.
    */
   @Input('for')
   public formControl: any;
 
   /**
-   * Contains {@see NgxCustomMessageComponent} if present.
+   * Contains {@link NgxCustomMessageComponent} if present.
    */
   @ContentChildren(NgxCustomMessageComponent)
   public customMsgComponent: QueryList<NgxCustomMessageComponent>;
 
   /**
-   * Contains {@see NgxValidatorNameDirective} if present.
+   * Contains {@link NgxValidatorNameDirective} if present.
    */
   @ContentChildren(NgxValidatorNameDirective)
   public customMsgDirective: QueryList<NgxValidatorNameDirective>;

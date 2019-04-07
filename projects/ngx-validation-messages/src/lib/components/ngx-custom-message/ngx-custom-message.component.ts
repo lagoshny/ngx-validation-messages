@@ -1,13 +1,10 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
 /**
- * Component allow to specify custom validator validation message override default message.
- * Using this component into {@see NgxValidationMessagesComponent}.
+ * Component allows specifying custom validation message for the specified
+ * validator to override default message.
  *
- * For example:
- * <ngx-validation-messages>
- *     <ngx-custom-message forValidator='required'>This is filed required!</ngx-custom-message>
- * </ngx-validation-messages>
+ * Use this component as child in {@link NgxValidationMessagesComponent}.
  */
 @Component({
   selector: 'ngx-custom-message',

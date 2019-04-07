@@ -15,9 +15,9 @@ export interface NgxValidationMessagesConfig {
   /**
    * Define custom styles to display validation messages.
    */
-  errorMessageStyles?: {
-    errorBlockClassNames?: string;
-    errorLabelClassNames?: string;
+  validationMessagesStyle?: {
+    blockClassNames?: string;
+    textClassNames?: string;
   };
 
 }

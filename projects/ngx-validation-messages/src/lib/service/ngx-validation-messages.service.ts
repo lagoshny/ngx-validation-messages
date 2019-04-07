@@ -2,8 +2,8 @@ import { Inject, Injectable } from '@angular/core';
 import { NGX_VALIDATION_MESSAGES_CONFIG, NgxValidationMessagesConfig } from '../interface/ngx-validation-messages.config';
 
 /**
- * Service allow to get validation messages from client's settings.
- * Inject {@link NgxValidationMessagesConfig} to get client's configuration with validation messages.
+ * Service allows getting validation messages from client's settings.
+ * Injecting {@link NgxValidationMessagesConfig} to get client's configuration with validation messages.
  */
 @Injectable()
 export class NgxValidationMessagesService {
@@ -19,10 +19,10 @@ export class NgxValidationMessagesService {
   }
 
   /**
-   * Get validation message for specifying validator.
+   * Get validation message for specified validator.
    *
    * @param validatorName for which to get message
-   * @param params passed parameters from validator for more detailed validation message
+   * @param params passed from validator for more detailed validation message
    *
    * @returns string validation message
    */

@@ -1,17 +1,12 @@
 import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
 
 /**
- * Allow to specify custom validator message to validator override default message.
+ * Allows to specify custom validator message to override default message.
  *
  * It's alternative for {@link NgxCustomMessageComponent}.
  * If you want to use standard html tags to define custom message, use this directive on html tag within
  * {@link NgxValidationMessagesComponent} specifying validator name as directive parameter,
  * otherwise use {@link NgxCustomMessageComponent}.
- *
- * For example:
- * <ngx-validation-messages>
- *     <div ngxValidatorName='required'>This is filed required!</div>
- * </ngx-validation-messages>
  */
 @Directive({
   selector: '[ngxValidatorName]'
