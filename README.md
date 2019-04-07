@@ -1,4 +1,4 @@
-# Library for convenient display validators validation messages
+## Allows displaying all validators validation messages using a single component
 
 #### Library work with Angular 2+ version. (updated for Angular 7).
 
@@ -35,6 +35,8 @@ export class AppRootModule {
 }
 // ...
 ```
+
+##### Note: validator's name specified in configuration case sensitive, if you will use name 'maxLength' instead 'maxlength' your message will not apply. In `console output` you will see error about it. 
 
 In other modules where you want to use `NgxValidationMessagesComponent`, you need simple import
 `NgxValidationMessagesModule`:
