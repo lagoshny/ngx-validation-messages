@@ -198,7 +198,7 @@ To override validation message for some validator, you can use `<ngx-custom-mess
          name="firstName"
          #firstNameVar="ngModel"/>
   <ngx-validation-messages [for]='firstNameVar'>
-    // Param forValidator accepts validator name to override message 
+    <!-- Param forValidator accepts validator name to override message -->
     <ngx-custom-message forValidator='minlength'>
       Min length for first name is #[requiredLength]
     </ngx-custom-message>
@@ -223,7 +223,7 @@ The second way to override message is using directive applied to child  `<ngx-va
          name="firstName"
          #firstNameVar="ngModel"/>
   <ngx-validation-messages [for]='firstNameVar'>
-     // Directive parameter accepts a validator name to override message 
+     <!-- Directive parameter accepts a validator name to override message -->
     <span ngxValidatorName='minlength'>
       Min length for first name is #[requiredLength]
     </span>
