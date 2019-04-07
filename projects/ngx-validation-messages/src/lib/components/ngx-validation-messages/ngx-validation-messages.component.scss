@@ -3,23 +3,12 @@
   display: inline-block;
   width: 100%;
   margin-bottom: 10px;
+  margin-top: 2px;
   padding: 8px;
   border-radius: 0;
   background: #c51244;
   box-shadow: 1px 1px 1px #aaaaaa;
   opacity: 0.8;
-}
-
-.ngx_vm__def_error_block:before {
-  content: '';
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-bottom: 10px solid #c51244;
-  position: absolute;
-  top: -9px;
-  left: 10px;
 }
 
 .ngx_vm__def_error_text {
