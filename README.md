@@ -27,7 +27,6 @@ import { NgxValidationMessagesModule } from '@lagoshny/ngx-validation-messages';
                 // to get validator params values for constructing more detail message
                 maxlength: 'Max count symbols are #[requiredLength]',
                 minlength: 'Min count symbols are #[requiredLength]'
-                ...
             }
         })
     ]
