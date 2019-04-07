@@ -206,7 +206,8 @@ To override validation message for some validator, you can use `<ngx-custom-mess
   ...
 ```
 In this case, for **required** validator will be used configured ***This is required filed!*** message, but for
-**minlength** validator will be used overridden ***Min length for first name is #[requiredLength]*** message instead of defined in the configuration ***Min count symbols are #[requiredLength]***.
+**minlength** validator will be used overridden ***Min length for first name is #[requiredLength]*** message 
+instead of defined in the configuration ***Min count symbols are #[requiredLength]*** .
  
 ##### Note: we can also use params placeholder in redefined a validation message in the same way as in the configuration object.
 
