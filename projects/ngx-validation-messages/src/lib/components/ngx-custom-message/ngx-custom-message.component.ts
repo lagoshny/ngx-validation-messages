@@ -24,7 +24,7 @@ export class NgxCustomMessageComponent {
   /**
    * Contains overridden message for validator.
    */
-  @ViewChild('message')
+  @ViewChild('message', {static: false})
   public message: ElementRef;
 
 }
