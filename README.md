@@ -1,8 +1,28 @@
 ## Allows displaying all validators validation messages using a single component
 
-#### Library work with Angular 2+ version. (updated to Angular 8).
+#### Library work with Angular 2+ version. (updated for Angular 8).
 
 This library allows you to decrease boilerplate code when handling validations error messages.
+## Contents
+1. [Changelog](#Changelog)
+1. [Getting started](#Getting-started)
+    1. [Installation](#Installation)
+    2. [Base configuration](#Base configuration)
+2. [Usage](#Usage)
+    1. [Template driven approach (ngModel)](#1-template-driven-approach-ngmodel)
+    2. [Form driven approach (reactive)](#2-form-driven-approach-reactive)
+    2. [Without component as error container](#3-use-without-component-as-error-container)
+3. [How it works?](#How it works?)        
+4. [Advanced configuration](#Advanced configuration)
+    1. [Override configured validation messages](#Override configured validation messages)
+    2. [Custom display validation messages styles](#Custom display validation messages styles)
+5. [Writing custom validators](#Writing custom validators)
+    1. [Example custom validator](#Example custom validator)
+6. [Further improvements](#Further improvements)
+
+## Changelog
+[Learn about the latest improvements](https://github.com/lagoshny/ngx-validation-messages/blob/master/CHANGELOG.md).
+
 ## Getting started
 
 ### Installation
@@ -10,7 +30,8 @@ This library allows you to decrease boilerplate code when handling validations e
 npm install @lagoshny/ngx-validation-messages --save
 ```
 
-### Configuration
+### Base configuration
+    
 To work with main `NgxValidationMessagesComponent` which decrease boilerplate validation code you need
 in the root application module import `NgxValidationMessagesModule`  passing configuration which contains  validation messages for validators:
 ```typescript
@@ -85,8 +106,8 @@ Instead of this boilerplate code you can add `<ngx-validation-messages>` compone
          minlength="3"
          [(ngModel)]="user.firstName"
          name="firstName"
-         #firstNameVar="ngModel"/>
-  <ngx-validation-messages [for]='firstNameVar'></ngx-validation-messages>
+         #firstNameVar="n~~**~~gModel"/>
+  <n~~**~~gx-validation-messages [for]='firstNameVar'></ngx-validation-messages>
 ```
 
 #### 2. Form driven approach (reactive)
@@ -149,6 +170,18 @@ You can decrease it using `NgxValidationMessagesComponent`:
   </form>
 ````
  
+ #### 3. Use without component as error container
+If you need simple to display error message in common style as it does `ngx-validation-messages` component you can do it as below:
+
+ ````html
+   <form >
+     ...
+     <ngx-validation-messages *ngIf="showError">
+        Your error message
+     </ngx-validation-messages>
+     ...
+   </form>
+ ````
 
 ## How it works?
 
@@ -181,7 +214,8 @@ To get right param names you need to check what params returns concrete validato
 
 For example **maxlength or minlength** standard validators return passed length param in validation result using **requiredLength** name and we can use its name with param placeholder in a validation message.
 
-## Override configured validation messages
+## Advanced configuration
+### Override configured validation messages
 
 If you want to specify a different message for some validator in the concrete HTML template you can use one of the following ways to override configured validation messages passed to `NgxValidationMessagesModule`.
 
@@ -233,7 +267,7 @@ The second way to override message is using directive applied to child  `<ngx-va
   ...
 ```
 
-## Custom display validation messages styles
+### Custom display validation messages styles
 
 If you want to change display default validation message styles, you can set custom CSS classes in the passed configuration for  `NgxValidationMessagesModule` use optional param ***validationMessagesStyle***:
 ```typescript
@@ -255,7 +289,7 @@ If you want to change display default validation message styles, you can set cus
 //...
 ```
 
-## Writing Custom validators
+## Writing custom validators
 
 If you want to write custom validator then for working `NgxValidationMessagesComponent` you need to follow some rule: **returned validation result should be in the following formats**:
 
