@@ -1,3 +1,8 @@
+
+## 1.0.7 (2019-08-04)
+#### Bug Fixes
+Fix readme file
+
 ## 1.0.6 (2019-08-04)
 
 #### Features
