@@ -1,11 +1,12 @@
-<div [hidden]="true">
-  <ng-content></ng-content>
+<div *ngIf="!formControl && customMsgComponent.length == 0 && customMsgDirective.length == 0"
+     [ngClass]="ngxValidationConfig?.validationMessagesStyle?.blockClassNames || 'ngx_vm__def_error_block'">
+ <span [ngClass]="ngxValidationConfig?.validationMessagesStyle?.textClassNames || 'ngx_vm__def_error_text'">
+   <ng-content></ng-content>
+ </span>
 </div>
 <div [ngClass]="ngxValidationConfig?.validationMessagesStyle?.blockClassNames || 'ngx_vm__def_error_block'"
      *ngIf="errorMessages.length > 0">
-  <!--    <div *ngFor="let message of errorMessages; let i = index;">-->
   <div *ngFor="let message of errorMessages">
-    <!--<br *ngIf="i > 0">-->
     <span [ngClass]="ngxValidationConfig?.validationMessagesStyle?.textClassNames || 'ngx_vm__def_error_text'">
       {{ message }}
     </span>

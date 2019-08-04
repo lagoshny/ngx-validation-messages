@@ -48,7 +48,7 @@ export class NgxValidationMessagesComponent {
   public get errorMessages(): Array<string> {
     const result: Array<string> = [];
 
-    if (!this.formControl.errors) {
+    if (!this.formControl || !this.formControl.errors) {
       return result;
     }
     if (this.customMsgComponent && this.customMsgComponent.length > 0) {
