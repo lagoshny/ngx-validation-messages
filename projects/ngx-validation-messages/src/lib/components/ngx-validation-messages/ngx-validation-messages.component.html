@@ -1,14 +1,29 @@
+<!--To show error messages standalone without component-->
 <div *ngIf="!formControl && customMsgComponent.length == 0 && customMsgDirective.length == 0"
      [ngClass]="ngxValidationConfig?.validationMessagesStyle?.blockClassNames || 'ngx_vm__def_error_block'">
  <span [ngClass]="ngxValidationConfig?.validationMessagesStyle?.textClassNames || 'ngx_vm__def_error_text'">
    <ng-content></ng-content>
  </span>
 </div>
-<div [ngClass]="ngxValidationConfig?.validationMessagesStyle?.blockClassNames || 'ngx_vm__def_error_block'"
-     *ngIf="errorMessages.length > 0">
-  <div *ngFor="let message of errorMessages">
-    <span [ngClass]="ngxValidationConfig?.validationMessagesStyle?.textClassNames || 'ngx_vm__def_error_text'">
-      {{ message }}
-    </span>
-  </div>
-</div>
+
+<ng-container *ngIf="errorMessages.length > 0">
+
+  <!--To show error messages in material ui style-->
+  <ng-container *ngIf="isMaterialError; else withoutMaterial">
+    <ng-container *ngFor="let message of errorMessages">
+      <mat-error>{{ message }}</mat-error>
+    </ng-container>
+  </ng-container>
+
+  <!--To show error messages in user style-->
+  <ng-template #withoutMaterial>
+    <div [ngClass]="ngxValidationConfig?.validationMessagesStyle?.blockClassNames || 'ngx_vm__def_error_block'">
+      <div *ngFor="let message of errorMessages">
+        <span [ngClass]="ngxValidationConfig?.validationMessagesStyle?.textClassNames || 'ngx_vm__def_error_text'">
+          {{ message }}
+        </span>
+      </div>
+    </div>
+  </ng-template>
+
+</ng-container>

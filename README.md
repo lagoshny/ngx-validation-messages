@@ -11,7 +11,8 @@ This library allows you to decrease boilerplate code when handling validations e
 2. [Usage](#Usage)
     1. [Template driven approach (ngModel)](#1-template-driven-approach-ngmodel)
     2. [Form driven approach (reactive)](#2-form-driven-approach-reactive)
-    2. [Without component as error container](#3-use-without-component-as-error-container)
+    3. [Without component as error container](#3-use-without-component-as-error-container)
+    4. [With material ui components using mat-error component](#4-with-material-ui-components-using-mat-error-component)
 3. [How it works?](#How-it-works?)        
 4. [Advanced configuration](#Advanced-configuration)
     1. [Override configured validation messages](#Override-configured-validation-messages)
@@ -181,6 +182,35 @@ If you need simple to display error message in common style as it does `ngx-vali
      </ngx-validation-messages>
      ...
    </form>
+ ````
+
+#### 4. With material ui components using mat-error component
+It's simple to use `ngx-validation-messages` with material ui `mat-error` component, to do this you need to put `ngxValidationMessages` directive to `mat-error` component like this:
+
+  ````html
+  <form [formGroup]="taskForm">
+   ....
+    <mat-form-field>
+        <input matInput
+               formControlName="email">
+        <mat-error ngxValidationMessages [for]="taskForm.get('email')"></mat-error>
+    </mat-form-field>
+   ...
+  </form>
+ ````
+
+After that if `FormControl` with name `email` will be invalid, then configured error messages for validators applied to `email` will be shown in material ui style.
+
+Also you can override configured error messages for concrete case in standard way:
+
+  ````html
+    <mat-form-field>
+        <input matInput
+               formControlName="email">
+        <mat-error ngxValidationMessages [for]="taskForm.get('email')">
+            <ngx-custom-message forValidator="required">Your new message</ngx-custom-message>
+        </mat-error>
+    </mat-form-field>
  ````
 
 ## How it works?

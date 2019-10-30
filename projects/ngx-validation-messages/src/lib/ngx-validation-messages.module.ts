@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { ModuleWithProviders, NgModule } from '@angular/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { NgxCustomMessageComponent } from './components/ngx-custom-message/ngx-custom-message.component';
 import { NgxValidationMessagesComponent } from './components/ngx-validation-messages/ngx-validation-messages.component';
 import { NgxValidatorNameDirective } from './directivies/ngx-validator-name.directive';
@@ -13,7 +14,8 @@ export { NgxValidatorNameDirective } from './directivies/ngx-validator-name.dire
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    MatFormFieldModule
   ],
   providers: [
     NgxValidationMessagesService

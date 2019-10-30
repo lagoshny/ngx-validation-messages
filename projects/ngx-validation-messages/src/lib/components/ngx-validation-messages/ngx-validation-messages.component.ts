@@ -1,4 +1,4 @@
-import { Component, ContentChildren, Inject, Input, QueryList } from '@angular/core';
+import { AfterViewInit, Component, ContentChildren, ElementRef, Inject, Input, QueryList } from '@angular/core';
 import { NgxValidatorNameDirective } from '../../directivies/ngx-validator-name.directive';
 import { NGX_VALIDATION_MESSAGES_CONFIG, NgxValidationMessagesConfig } from '../../interface/ngx-validation-messages.config';
 import { NgxValidationMessagesService } from '../../service/ngx-validation-messages.service';
@@ -9,11 +9,11 @@ import { NgxCustomMessageComponent } from '../ngx-custom-message/ngx-custom-mess
  * and html elements with directive {@link NgxValidatorNameDirective} to override validation messages.
  */
 @Component({
-  selector: 'ngx-validation-messages',
+  selector: 'ngx-validation-messages, [ngxValidationMessages]',
   templateUrl: './ngx-validation-messages.component.html',
   styleUrls: ['./ngx-validation-messages.component.scss']
 })
-export class NgxValidationMessagesComponent {
+export class NgxValidationMessagesComponent implements AfterViewInit {
 
   /**
    * Form control for which need to show validation messages.
@@ -33,13 +33,26 @@ export class NgxValidationMessagesComponent {
   @ContentChildren(NgxValidatorNameDirective)
   public customMsgDirective: QueryList<NgxValidatorNameDirective>;
 
+  public isMaterialError = false;
+
   /**
    * Key to get default validation message.
    */
   private defaultError = 'error';
 
+  private materialErrorElement = 'MAT-ERROR';
+
   constructor(@Inject(NGX_VALIDATION_MESSAGES_CONFIG) public ngxValidationConfig: NgxValidationMessagesConfig,
-              private ngxValidationMessagesService: NgxValidationMessagesService) {
+              private ngxValidationMessagesService: NgxValidationMessagesService,
+              private directiveElementRef: ElementRef) {
+  }
+
+  public ngAfterViewInit(): void {
+    if (this.directiveElementRef && this.directiveElementRef.nativeElement
+      && this.directiveElementRef.nativeElement.nodeName) {
+      this.isMaterialError = this.materialErrorElement.toLocaleUpperCase()
+        === this.directiveElementRef.nativeElement.nodeName.toLocaleUpperCase();
+    }
   }
 
   /**
