@@ -32,7 +32,7 @@ export { NgxValidatorNameDirective } from './directivies/ngx-validator-name.dire
   ]
 })
 export class NgxValidationMessagesModule {
-  static forRoot(config: NgxValidationMessagesConfig): ModuleWithProviders {
+  static forRoot(config: NgxValidationMessagesConfig): ModuleWithProviders<NgxValidationMessagesModule> {
     return {
       ngModule: NgxValidationMessagesModule,
       providers: [

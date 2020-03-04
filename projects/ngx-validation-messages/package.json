@@ -1,6 +1,6 @@
 {
   "name": "@lagoshny/ngx-validation-messages",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "This module allows to simplify display form validator validation messages using single component.",
   "readme": "README.md",
   "author": "Ilya Lagoshny <ilya@lagoshny.ru>",
@@ -23,6 +23,7 @@
     "Angular 6",
     "Angular 7",
     "Angular 8",
+    "Angular 9",
     "Material ui"
   ],
   "homepage": "https://github.com/lagoshny/ngx-validation-messages",

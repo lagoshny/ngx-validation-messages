@@ -1,6 +1,6 @@
 ## Allows displaying all validators validation messages using a single component
 
-#### Library work with Angular 2+ version. (updated for Angular 8).
+#### Library work with Angular 2+ version. (updated for Angular 9. Ivy disabled).
 
 This library allows you to decrease boilerplate code when handling validations error messages.
 ## Contents

@@ -1,3 +1,6 @@
+## 1.0.10 (2020-03-04)
+Updated Angular version to Angular 9.
+
 ## 1.0.9 (2019-10-30)
 Added support to use `ngx-validation-messages` with material ui `mat-form-field` `mat-error` component to display error in standard `ngx-validation-messages` way.
 
