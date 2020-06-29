@@ -1,3 +1,7 @@
+## 1.1.0 (2020-06-29)
+#### Update
+Updated to Angular 10 version.
+
 ## 1.0.10 (2020-03-04)
 Updated Angular version to Angular 9.
 
