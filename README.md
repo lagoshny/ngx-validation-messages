@@ -1,4 +1,28 @@
-## Allows displaying all validators validation messages using a single component
+# NgxValidationMessages
+<a href="https://www.npmjs.com/package/@lagoshny/ngx-validation-messages">
+  <img src="https://img.shields.io/npm/v/@lagoshny/ngx-validation-messages" alt="Last released npm version" />
+</a>&nbsp;
+
+<a href="https://github.com/lagoshny/ngx-validation-messages/actions?query=workflow%3ABuild">
+  <img src="https://img.shields.io/github/workflow/status/lagoshny/ngx-validation-messages/Build/master" alt="Pipeline info" />
+</a>&nbsp;
+
+<a href="https://github.com/lagoshny/ngx-validation-messages/issues">
+  <img src="https://img.shields.io/github/issues/lagoshny/ngx-validation-messages" alt="Total open issues" />
+</a>&nbsp;
+
+<a href="https://www.npmjs.com/package/@lagoshny/ngx-validation-messages">
+  <img src="https://img.shields.io/npm/dt/@lagoshny/ngx-validation-messages" alt="Total downloads by npm" />
+</a>&nbsp;
+
+<a href="https://mit-license.org/">
+  <img src="https://img.shields.io/npm/l/@lagoshny/ngx-validation-messages" alt="License info" />
+</a>&nbsp;
+
+<br />
+<br />
+
+Allows displaying all validators validation messages using a single component.
 
 #### Library work with Angular 6+ version. (updated for Angular 10. Ivy disabled).
 
