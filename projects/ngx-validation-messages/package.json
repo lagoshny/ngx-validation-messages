@@ -1,13 +1,13 @@
 {
   "name": "@lagoshny/ngx-validation-messages",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "This module allows to simplify display form validator validation messages using single component.",
   "readme": "README.md",
   "author": "Ilya Lagoshny <ilya@lagoshny.ru>",
   "license": "MIT",
   "peerDependencies": {
-    "@angular/common": "^2.0.0",
-    "@angular/core": "^2.0.0"
+    "@angular/common": ">=6.x.x <= 10.x.x",
+    "@angular/core": ">=6.x.x <= 10.x.x"
   },
   "keywords": [
     "Angular validation",
@@ -16,6 +16,7 @@
     "form validation",
     "validator",
     "Angular form",
+    "Angular form validation",
     "template driven form",
     "reactive form",
     "Angular",

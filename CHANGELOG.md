@@ -1,3 +1,7 @@
+## 1.1.2 (2020-10-30)
+#### Update
+Updated libs version.
+
 ## 1.1.0 (2020-06-29)
 #### Update
 Updated to Angular 10 version.
