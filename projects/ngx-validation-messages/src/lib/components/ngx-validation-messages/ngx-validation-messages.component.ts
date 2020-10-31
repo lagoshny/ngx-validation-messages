@@ -1,6 +1,9 @@
 import { AfterViewInit, Component, ContentChildren, ElementRef, Inject, Input, QueryList } from '@angular/core';
 import { NgxValidatorNameDirective } from '../../directivies/ngx-validator-name.directive';
-import { NGX_VALIDATION_MESSAGES_CONFIG, NgxValidationMessagesConfig } from '../../interface/ngx-validation-messages.config';
+import {
+  NGX_VALIDATION_MESSAGES_CONFIG,
+  NgxValidationMessagesConfig
+} from '../../interface/ngx-validation-messages.config';
 import { NgxValidationMessagesService } from '../../service/ngx-validation-messages.service';
 import { NgxCustomMessageComponent } from '../ngx-custom-message/ngx-custom-message.component';
 
@@ -25,13 +28,13 @@ export class NgxValidationMessagesComponent implements AfterViewInit {
    * Contains {@link NgxCustomMessageComponent} if present.
    */
   @ContentChildren(NgxCustomMessageComponent)
-  public customMsgComponent: QueryList<NgxCustomMessageComponent>;
+  public customMsgComponent;
 
   /**
    * Contains {@link NgxValidatorNameDirective} if present.
    */
   @ContentChildren(NgxValidatorNameDirective)
-  public customMsgDirective: QueryList<NgxValidatorNameDirective>;
+  public customMsgDirective;
 
   public isMaterialError = false;
 

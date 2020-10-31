@@ -17,9 +17,6 @@ export { NgxValidatorNameDirective } from './directivies/ngx-validator-name.dire
     CommonModule,
     MatFormFieldModule
   ],
-  providers: [
-    NgxValidationMessagesService
-  ],
   declarations: [
     NgxValidationMessagesComponent,
     NgxCustomMessageComponent,
