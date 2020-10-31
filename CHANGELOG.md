@@ -1,6 +1,6 @@
 ## 1.1.2 (2020-10-30)
 #### Update
-Updated libs version.
+Updated libs version and refactoring.
 
 ## 1.1.0 (2020-06-29)
 #### Update
