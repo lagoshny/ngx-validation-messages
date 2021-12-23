@@ -1,3 +1,14 @@
+## 2.0.1 (2021-12-23)
+Updated Angular version to Angular 12.
+
+This is the last Angular version for `View Engine` compilation.
+Due this the library will have two versions:
+
+- That support `View Engine` compilation: `[2.0.0 - 2.x.x]`
+- That support `Ivy` compilation: `[3.0.0 - х.x.x]`
+
+If you have `Ivy compilation` or `Angular 13` use the [latest](https://github.com/lagoshny/ngx-validation-messages) lib version.
+
 ## 1.1.4 (2021-12-23)
 #### Update
 Deleted max Angular version.

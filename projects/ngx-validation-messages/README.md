@@ -1,10 +1,10 @@
 # NgxValidationMessages
-<a href="https://www.npmjs.com/package/@lagoshny/ngx-validation-messages">
-  <img src="https://img.shields.io/npm/v/@lagoshny/ngx-validation-messages" alt="Last released npm version" />
+<a href="https://www.npmjs.com/package/@lagoshny/ngx-validation-messages/v/lts-view-engine">
+  <img src="https://img.shields.io/npm/v/@lagoshny/ngx-validation-messages/lts-view-engine?label=npm" alt="LTS view engine npm version" />
 </a>&nbsp;
 
 <a href="https://github.com/lagoshny/ngx-validation-messages/actions?query=workflow%3ABuild">
-  <img src="https://img.shields.io/github/workflow/status/lagoshny/ngx-validation-messages/Build/master" alt="Pipeline info" />
+  <img src="https://img.shields.io/github/workflow/status/lagoshny/ngx-validation-messages/Build/lts-view-engine" alt="Pipeline info" />
 </a>&nbsp;
 
 <a href="https://github.com/lagoshny/ngx-validation-messages/issues">
@@ -22,9 +22,17 @@
 <br />
 <br />
 
-Allows displaying all validators validation messages using a single component.
+## ⚠ Lib version that compatible with Angular 6-12 versions that uses old `View Engine` compilation.
 
-#### Library work with Angular 6+ version. (updated for Angular 11. Ivy disabled).
+### 💥 If you use new `Ivy` compilation or Angular 13 you should use the [latest](https://github.com/lagoshny/ngx-validation-messages) lib version.
+>
+>See more about it [here](https://github.com/lagoshny/ngx-validation-messages/blob/master/CHANGELOG.md#300-2021-12-23).
+
+### New versioning policy.
+
+- Versions that work with old `View Engine` compilation [`2.0.0`-`2.x.x`].
+
+- Versions that work with new `Ivy` compilation [`3.0.0`-`x.x.x`].
 
 This library allows you to decrease boilerplate code when handling validations error messages.
 ## Contents
@@ -46,13 +54,13 @@ This library allows you to decrease boilerplate code when handling validations e
 6. [Further improvements](#Further-improvements)
 
 ## Changelog
-[Learn about the latest improvements](https://github.com/lagoshny/ngx-validation-messages/blob/master/CHANGELOG.md).
+[Learn about the latest improvements](https://github.com/lagoshny/ngx-validation-messages/blob/lts-view-engine/CHANGELOG.md).
 
 ## Getting started
 
 ### Installation
 ```
-npm install @lagoshny/ngx-validation-messages --save
+npm install @lagoshny/ngx-validation-messages@lts-view-engine --save
 ```
 
 ### Base configuration
