@@ -1,4 +1,4 @@
-## 2.0.1 (2021-12-23)
+## 2.0.2 (2021-12-23)
 Updated Angular version to Angular 12.
 
 This is the last Angular version for `View Engine` compilation.
