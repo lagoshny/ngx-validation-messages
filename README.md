@@ -1,6 +1,6 @@
 # NgxValidationMessages
-<a href="https://www.npmjs.com/package/@lagoshny/ngx-validation-messages">
-  <img src="https://img.shields.io/npm/v/@lagoshny/ngx-validation-messages" alt="Last released npm version" />
+<a href="https://www.npmjs.com/package/@lagoshny/ngx-validation-messages/v/latest">
+  <img src="https://img.shields.io/npm/v/@lagoshny/ngx-validation-messages/latest?label=npm" alt="Latest npm version" />
 </a>&nbsp;
 
 <a href="https://github.com/lagoshny/ngx-validation-messages/actions?query=workflow%3ABuild">
@@ -22,9 +22,19 @@
 <br />
 <br />
 
-Allows displaying all validators validation messages using a single component.
+## ⭐Compatible with Angular 12.x.x - 13.x.x versions that uses `Ivy compilation`.
 
-#### Library work with Angular 6+ version. (updated for Angular 11. Ivy disabled).
+
+### ⚠ If you use old `View Engine` compilation or Angular 6.x.x - 11.x.x you need to use [2.x.x](https://github.com/lagoshny/ngx-validation-messages/tree/lts-view-engine) lib version.
+>
+>See more about it [here](https://github.com/lagoshny/ngx-validation-messages/blob/master/CHANGELOG.md#300-2021-12-23).
+
+### 💡 New versioning policy.
+
+- Versions that work with old `View Engine` compilation [`2.0.0`-`2.x.x`].
+
+- Versions that work with new `Ivy` compilation [`3.0.0`-`x.x.x`].
+
 
 This library allows you to decrease boilerplate code when handling validations error messages.
 ## Contents
@@ -52,7 +62,7 @@ This library allows you to decrease boilerplate code when handling validations e
 
 ### Installation
 ```
-npm install @lagoshny/ngx-validation-messages --save
+npm install @lagoshny/ngx-validation-messages@latest --save
 ```
 
 ### Base configuration

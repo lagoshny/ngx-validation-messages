@@ -1,3 +1,19 @@
+## 3.0.0 (2021-12-23)
+#### Updated angular
+Updated to Angular 13.
+
+### ⚠ Breaking changes
+>This version supports only from Angular 12 and above that uses `Ivy compilation`.
+>
+>Angular 13 package tools are [no longer support](https://github.com/ng-packagr/ng-packagr/blob/master/CHANGELOG.md#1300-2021-11-03) old `View Engine` compilation.
+Now it uses only `Ivy` compilation.
+
+Now the `lib` have 2 versions for `Angular 6-11` [2.x.x](https://github.com/lagoshny/ngx-validation-messages/tree/lts-view-engine) and `Angular 12-13+` [3.x.x](https://github.com/lagoshny/ngx-validation-messages) that difference between that one is support old `View Engine` compilation, another uses only new `Ivy` compilation.
+
+### Versions that support old `View Engine` compilation will place on [lts-view-engine](https://github.com/lagoshny/ngx-validation-messages/tree/lts-view-engine) branch of the repo.
+
+>I strongly recommend migrating to Angular Ivy compilation and use new lib version, because support two versions is not simple and in future old versions can not be supported.
+
 ## 1.1.4 (2021-12-23)
 #### Update
 Deleted max Angular version.
