@@ -1,3 +1,7 @@
+## 1.1.4 (2021-12-23)
+#### Update
+Deleted max Angular version.
+
 ## 1.1.3 (2021-02-09)
 #### Update
 Updated to Angular 11 version.
