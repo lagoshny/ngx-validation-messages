@@ -1,3 +1,7 @@
+## 15.0.0 (2025-11-30)
+#### Updated angular
+Updated to Angular 15.
+
 ## 3.0.0 (2021-12-23)
 #### Updated angular
 Updated to Angular 13.

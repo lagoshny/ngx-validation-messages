@@ -1,21 +1,21 @@
-import { CommonModule } from '@angular/common';
-import { ModuleWithProviders, NgModule } from '@angular/core';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { NgxCustomMessageComponent } from './components/ngx-custom-message/ngx-custom-message.component';
-import { NgxValidationMessagesComponent } from './components/ngx-validation-messages/ngx-validation-messages.component';
-import { NgxValidatorNameDirective } from './directivies/ngx-validator-name.directive';
-import { NGX_VALIDATION_MESSAGES_CONFIG, NgxValidationMessagesConfig } from './interface/ngx-validation-messages.config';
-import { NgxValidationMessagesService } from './service/ngx-validation-messages.service';
+import {CommonModule} from '@angular/common';
+import {ModuleWithProviders, NgModule} from '@angular/core';
+import {NgxCustomMessageComponent} from './components/ngx-custom-message/ngx-custom-message.component';
+import {NgxValidationMessagesComponent} from './components/ngx-validation-messages/ngx-validation-messages.component';
+import {NgxValidatorNameDirective} from './directivies/ngx-validator-name.directive';
+import {NGX_VALIDATION_MESSAGES_CONFIG, NgxValidationMessagesConfig} from './interface/ngx-validation-messages.config';
+import {NgxValidationMessagesService} from './service/ngx-validation-messages.service';
+import {MatFormFieldModule} from '@angular/material/form-field';
 
-export { NGX_VALIDATION_MESSAGES_CONFIG, NgxValidationMessagesConfig } from './interface/ngx-validation-messages.config';
-export { NgxCustomMessageComponent } from './components/ngx-custom-message/ngx-custom-message.component';
-export { NgxValidationMessagesComponent } from './components/ngx-validation-messages/ngx-validation-messages.component';
-export { NgxValidatorNameDirective } from './directivies/ngx-validator-name.directive';
+export {NGX_VALIDATION_MESSAGES_CONFIG, NgxValidationMessagesConfig} from './interface/ngx-validation-messages.config';
+export {NgxCustomMessageComponent} from './components/ngx-custom-message/ngx-custom-message.component';
+export {NgxValidationMessagesComponent} from './components/ngx-validation-messages/ngx-validation-messages.component';
+export {NgxValidatorNameDirective} from './directivies/ngx-validator-name.directive';
 
 @NgModule({
   imports: [
     CommonModule,
-    MatFormFieldModule
+    MatFormFieldModule,
   ],
   declarations: [
     NgxValidationMessagesComponent,
