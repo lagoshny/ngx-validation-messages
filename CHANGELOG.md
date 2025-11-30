@@ -1,7 +1,3 @@
-## 17.0.1 (2025-11-30)
-#### Fix
-Fixed reserved attribute name `for` to `control`.
-
 ## 17.0.0 (2025-11-30)
 #### Updated angular
 Updated to Angular 17.
