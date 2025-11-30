@@ -21,7 +21,7 @@ export class NgxValidationMessagesComponent implements AfterViewInit {
   /**
    * Form control for which need to show validation messages.
    */
-  @Input('for')
+  @Input('control')
   public formControl: any;
 
   /**

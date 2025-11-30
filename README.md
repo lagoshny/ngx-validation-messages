@@ -38,6 +38,7 @@
 
 This library allows you to decrease boilerplate code when handling validations error messages.
 ## Contents
+1. [Migrate to Angular 17](#Migrate-to-Angular-17)
 1. [Changelog](#Changelog)
 1. [Getting started](#Getting-started)
     1. [Installation](#Installation)
@@ -54,6 +55,20 @@ This library allows you to decrease boilerplate code when handling validations e
 5. [Writing custom validators](#Writing-custom-validators)
     1. [Example custom validator](#Example-custom-validator)
 6. [Further improvements](#Further-improvements)
+
+## Migrate to Angular 17
+While Angular 17 prohibition use attribute name `for` it was renamed to `control`.
+Now you need to change from:
+
+```html
+<ngx-validation-messages [for]="userForm.get('email')"></ngx-validation-messages>
+```
+
+To new attribute name:
+
+```html
+<ngx-validation-messages [control]="userForm.get('email')"></ngx-validation-messages>
+```
 
 ## Changelog
 [Learn about the latest improvements](https://github.com/lagoshny/ngx-validation-messages/blob/master/CHANGELOG.md).
