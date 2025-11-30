@@ -44,5 +44,7 @@
       }
     }
   },
-  "defaultProject": "ngx-validation-messages"
+  "cli": {
+    "analytics": false
+  }
 }
