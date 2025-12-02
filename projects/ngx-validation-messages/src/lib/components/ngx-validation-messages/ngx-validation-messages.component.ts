@@ -107,7 +107,7 @@ export class NgxValidationMessagesComponent implements AfterViewInit {
         return;
       }
       let message = (msg instanceof NgxCustomMessageComponent)
-        ? msg.message.nativeElement.innerText : msg.message;
+        ? msg.message?.nativeElement.innerText : msg.message;
       message = this.ngxValidationMessagesService.expandParameterizedTemplateMessage(message, this.formControl.errors[msg.validatorName]);
 
       typeof this.formControl.errors[msg.validatorName] === 'object'

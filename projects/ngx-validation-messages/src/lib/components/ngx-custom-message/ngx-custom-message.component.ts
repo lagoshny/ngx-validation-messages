@@ -22,12 +22,12 @@ export class NgxCustomMessageComponent {
    * The name of the validator for which you want to override the message.
    */
   @Input('forValidator')
-  public validatorName: string;
+  public validatorName: string | undefined;
 
   /**
    * Contains overridden message for validator.
    */
   @ViewChild('message')
-  public message: ElementRef;
+  public message: ElementRef | undefined;
 
 }
