@@ -1,5 +1,5 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 /**
  * Component allows specifying custom validation message for the specified
@@ -14,9 +14,7 @@ import { CommonModule } from '@angular/common';
     <div #message>
       <ng-content></ng-content>
     </div>`,
-    imports: [
-        CommonModule,
-    ]
+    imports: []
 })
 export class NgxCustomMessageComponent {
 
