@@ -1,9 +1,9 @@
 export class ServerError {
 
-    public field: string;
+  public field!: string;
 
-    public rejectedValue: string;
+  public rejectedValue!: string;
 
-    public message: string;
+  public message!: string;
 
 }

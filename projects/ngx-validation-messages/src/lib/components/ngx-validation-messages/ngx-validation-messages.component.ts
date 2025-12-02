@@ -6,15 +6,22 @@ import {
 } from '../../interface/ngx-validation-messages.config';
 import { NgxValidationMessagesService } from '../../service/ngx-validation-messages.service';
 import { NgxCustomMessageComponent } from '../ngx-custom-message/ngx-custom-message.component';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 /**
  * Component for displaying validation messages, supports child components of type {@link NgxCustomMessageComponent}
  * and html elements with directive {@link NgxValidatorNameDirective} to override validation messages.
  */
 @Component({
+  standalone: true,
   selector: 'ngx-validation-messages, [ngxValidationMessages]',
-  templateUrl: './ngx-validation-messages.component.html',
-  styleUrls: ['./ngx-validation-messages.component.scss']
+    templateUrl: './ngx-validation-messages.component.html',
+    styleUrls: ['./ngx-validation-messages.component.scss'],
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+    ]
 })
 export class NgxValidationMessagesComponent implements AfterViewInit {
 
@@ -28,13 +35,13 @@ export class NgxValidationMessagesComponent implements AfterViewInit {
    * Contains {@link NgxCustomMessageComponent} if present.
    */
   @ContentChildren(NgxCustomMessageComponent)
-  public customMsgComponent;
+  public customMsgComponent: any;
 
   /**
    * Contains {@link NgxValidatorNameDirective} if present.
    */
   @ContentChildren(NgxValidatorNameDirective)
-  public customMsgDirective;
+  public customMsgDirective: any;
 
   public isMaterialError = false;
 
@@ -100,7 +107,7 @@ export class NgxValidationMessagesComponent implements AfterViewInit {
         return;
       }
       let message = (msg instanceof NgxCustomMessageComponent)
-        ? msg.message.nativeElement.innerText : msg.message;
+        ? msg.message?.nativeElement.innerText : msg.message;
       message = this.ngxValidationMessagesService.expandParameterizedTemplateMessage(message, this.formControl.errors[msg.validatorName]);
 
       typeof this.formControl.errors[msg.validatorName] === 'object'

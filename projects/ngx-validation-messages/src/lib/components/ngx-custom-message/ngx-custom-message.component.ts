@@ -1,5 +1,6 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 
+
 /**
  * Component allows specifying custom validation message for the specified
  * validator to override default message.
@@ -7,11 +8,13 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
  * Use this component as child in {@link NgxValidationMessagesComponent}.
  */
 @Component({
+  standalone: true,
   selector: 'ngx-custom-message',
-  template: `
+    template: `
     <div #message>
       <ng-content></ng-content>
-    </div>`
+    </div>`,
+    imports: []
 })
 export class NgxCustomMessageComponent {
 
@@ -19,12 +22,12 @@ export class NgxCustomMessageComponent {
    * The name of the validator for which you want to override the message.
    */
   @Input('forValidator')
-  public validatorName: string;
+  public validatorName: string | undefined;
 
   /**
    * Contains overridden message for validator.
    */
   @ViewChild('message')
-  public message: ElementRef;
+  public message: ElementRef | undefined;
 
 }

@@ -1,11 +1,16 @@
 import { Inject, Injectable } from '@angular/core';
-import { NGX_VALIDATION_MESSAGES_CONFIG, NgxValidationMessagesConfig } from '../interface/ngx-validation-messages.config';
+import {
+  NGX_VALIDATION_MESSAGES_CONFIG,
+  NgxValidationMessagesConfig
+} from '../interface/ngx-validation-messages.config';
 
 /**
  * Service allows getting validation messages from client's settings.
  * Injecting {@link NgxValidationMessagesConfig} to get client's configuration with validation messages.
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class NgxValidationMessagesService {
 
   public static SERVER_ERRORS = 'serverErrors';
@@ -45,7 +50,7 @@ export class NgxValidationMessagesService {
   public expandParameterizedTemplateMessage(msg: string, params: object): string {
     while (this.paramsRegExp.test(msg)) {
       const foundParams = this.paramsRegExp.exec(msg);
-      foundParams.forEach(value => {
+      foundParams?.forEach(value => {
         const paramPlaceholder = value;
         value = value.replace('#[', '').replace(']', '');
         msg = msg.replace(paramPlaceholder, this.getParameter(params, value));
@@ -64,11 +69,13 @@ export class NgxValidationMessagesService {
    *
    * @return property value or empty string
    */
-  private getParameter(obj: object, prop: string): string {
-    return prop.split('.')
-      .reduce((m, i) => {
-        return m && typeof m === 'object' ? m[i] : '';
-      }, obj);
+  private getParameter(obj: unknown, prop: string): string {
+    return prop.split('.').reduce((acc: unknown, key: string) => {
+      if (acc != null && typeof acc === 'object') {
+        return (acc as Record<string, unknown>)[key];
+      }
+      return '';
+    }, obj) as string ?? '';
   }
 
   // public static applyServerError(control: AbstractControl | null, serverError: ServerError): void {

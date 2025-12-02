@@ -1,3 +1,21 @@
+## 17.1.0 (2025-12-01)
+#### Updated lib to standalone
+Migration from NgModule system to standalone.
+
+>Changed lib configuration, check new approach in README.md.
+
+## 17.0.0 (2025-11-30)
+#### Updated angular
+Updated to Angular 17.
+
+## 16.0.0 (2025-11-30)
+#### Updated angular
+Updated to Angular 16.
+
+## 15.0.0 (2025-11-30)
+#### Updated angular
+Updated to Angular 15.
+
 ## 3.0.0 (2021-12-23)
 #### Updated angular
 Updated to Angular 13.

@@ -9,6 +9,7 @@ import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
  * otherwise use {@link NgxCustomMessageComponent}.
  */
 @Directive({
+  standalone: true,
   selector: '[ngxValidatorName]'
 })
 export class NgxValidatorNameDirective implements AfterViewInit {
@@ -17,12 +18,12 @@ export class NgxValidatorNameDirective implements AfterViewInit {
    * The name of the validator for which you want to override the message.
    */
   @Input()
-  public validatorName: string;
+  public validatorName: string | undefined;
 
   /**
    * Contains overridden message for validator.
    */
-  public message: string;
+  public message: string | undefined;
 
   constructor(private elem: ElementRef) {
   }
