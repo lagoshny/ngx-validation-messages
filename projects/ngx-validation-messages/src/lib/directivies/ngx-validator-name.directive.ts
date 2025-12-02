@@ -9,6 +9,7 @@ import { AfterViewInit, Directive, ElementRef, Input } from '@angular/core';
  * otherwise use {@link NgxCustomMessageComponent}.
  */
 @Directive({
+  standalone: true,
   selector: '[ngxValidatorName]'
 })
 export class NgxValidatorNameDirective implements AfterViewInit {

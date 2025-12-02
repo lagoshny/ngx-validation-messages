@@ -5,7 +5,9 @@ import { NGX_VALIDATION_MESSAGES_CONFIG, NgxValidationMessagesConfig } from '../
  * Service allows getting validation messages from client's settings.
  * Injecting {@link NgxValidationMessagesConfig} to get client's configuration with validation messages.
  */
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class NgxValidationMessagesService {
 
   public static SERVER_ERRORS = 'serverErrors';

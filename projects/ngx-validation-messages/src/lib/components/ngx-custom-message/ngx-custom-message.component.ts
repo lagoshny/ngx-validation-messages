@@ -1,4 +1,5 @@
-import { Component, ElementRef, Input, ViewChild } from '@angular/core';
+import {Component, ElementRef, Input, ViewChild} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 /**
  * Component allows specifying custom validation message for the specified
@@ -7,11 +8,15 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
  * Use this component as child in {@link NgxValidationMessagesComponent}.
  */
 @Component({
+  standalone: true,
   selector: 'ngx-custom-message',
   template: `
     <div #message>
       <ng-content></ng-content>
-    </div>`
+    </div>`,
+  imports: [
+    CommonModule,
+  ]
 })
 export class NgxCustomMessageComponent {
 

@@ -22,26 +22,29 @@
 <br />
 <br />
 
-## ⭐Compatible with Angular 12.x.x - 13.x.x versions that uses `Ivy compilation`.
-
+## ⭐Compatible with Angular 14.x.x-17.x.x versions that uses `Ivy compilation` and `NgModule`/`standalone` components.
 
 ### ⚠ If you use old `View Engine` compilation or Angular 6.x.x - 11.x.x you need to use [2.x.x](https://github.com/lagoshny/ngx-validation-messages/tree/lts-view-engine) lib version.
 >
 >See more about it [here](https://github.com/lagoshny/ngx-validation-messages/blob/master/CHANGELOG.md#300-2021-12-23).
 
-### 💡 New versioning policy.
-
+### 💡 Old versioning policy.
 - Versions that work with old `View Engine` compilation [`2.0.0`-`2.x.x`].
 
 - Versions that work with new `Ivy` compilation [`3.0.0`-`x.x.x`].
+- 
+### 💡 New versioning policy.
+Now lib version matches to Angular supported version.
 
+For example lastest 17.x.x lib version supports for Angular 17.
 
 This library allows you to decrease boilerplate code when handling validations error messages.
 ## Contents
 1. [Changelog](#Changelog)
 1. [Getting started](#Getting-started)
     1. [Installation](#Installation)
-    2. [Base configuration](#Base-configuration)
+    2. [Base configuration Standalone](#Base-configuration-standalone)
+    2. [Base configuration NgModule](#Base-configuration-ngmodule)
 2. [Usage](#Usage)
     1. [Template driven approach (ngModel)](#1-template-driven-approach-ngmodel)
     2. [Form driven approach (reactive)](#2-form-driven-approach-reactive)
@@ -65,26 +68,81 @@ This library allows you to decrease boilerplate code when handling validations e
 npm install @lagoshny/ngx-validation-messages@latest --save
 ```
 
-### Base configuration
-    
+### Base configuration Standalone
+If you use standalone components in your Angular application use this configuration style:
+
+To work with main `NgxValidationMessagesComponent` which decrease boilerplate validation code you need
+in the root application configuration file import `provideNgxValidationMessages` and pass configuration which contains  validation messages for validators:
+```typescript
+// ...
+import { provideNgxValidationMessages } from '@lagoshny/ngx-validation-messages';
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    // ...
+    provideNgxValidationMessages({
+      messages: {
+        // Key is validator name, value is validator message
+        required: 'This is required filed!',
+        // If validator gets params, you can specify params placeholder in the validation message
+        // to get validator params values for constructing more detail message
+        maxlength: 'Max count symbols are #[requiredLength]',
+        minlength: 'Min count symbols are #[requiredLength]'
+      }
+    }),
+    // ...
+  ]
+}
+// ...
+```
+
+##### Note: validator's name specified in configuration case sensitive, if you will use name 'maxLength' instead 'maxlength' your message will not apply. In `console output` you will see error about it.
+
+In your components where you want to use `NgxValidationMessagesComponent`, you need simple import
+`NgxValidationMessagesComponent`:
+
+```typescript
+// ...
+import { NgxValidationMessagesComponent } from '@lagoshny/ngx-validation-messages';
+
+@Component({
+  standalone: true,
+  selector: 'some-selector',
+  templateUrl: './some-template.component.html',
+  imports: [
+    NgxValidationMessagesComponent,
+  ],
+})
+export class SomeModule {
+}
+// ...
+```
+
+After that you can use the `NgxValidationMessagesComponent` in your templates, about it see below.
+
+### Base configuration NgModule
+If you use old `NgModule` in your Angular application use this configuration style:
+
 To work with main `NgxValidationMessagesComponent` which decrease boilerplate validation code you need
 in the root application module import `NgxValidationMessagesModule`  passing configuration which contains  validation messages for validators:
 ```typescript
 // ...
-import { NgxValidationMessagesModule } from '@lagoshny/ngx-validation-messages';
+import { provideNgxValidationMessages } from '@lagoshny/ngx-validation-messages';
 
 @NgModule({
-    imports: [
-        NgxValidationMessagesModule.forRoot({
-            messages: {
-                // Key is validator name, value is validator message
-                required: 'This is required filed!',
-                // If validator gets params, you can specify params placeholder in the validation message
-                // to get validator params values for constructing more detail message
-                maxlength: 'Max count symbols are #[requiredLength]',
-                minlength: 'Min count symbols are #[requiredLength]'
-            }
-        })
+    providers: [
+      // ...
+      provideNgxValidationMessages({
+        messages: {
+          // Key is validator name, value is validator message
+          required: 'This is required filed!',
+          // If validator gets params, you can specify params placeholder in the validation message
+          // to get validator params values for constructing more detail message
+          maxlength: 'Max count symbols are #[requiredLength]',
+          minlength: 'Min count symbols are #[requiredLength]'
+        }
+      }),
+      // ...
     ]
 })
 export class AppRootModule {
@@ -95,14 +153,15 @@ export class AppRootModule {
 ##### Note: validator's name specified in configuration case sensitive, if you will use name 'maxLength' instead 'maxlength' your message will not apply. In `console output` you will see error about it. 
 
 In other modules where you want to use `NgxValidationMessagesComponent`, you need simple import
-`NgxValidationMessagesModule`:
+`NgxValidationMessagesComponent`:
+
 ```typescript
 // ...
-import { NgxValidationMessagesModule } from '@lagoshny/ngx-validation-messages';
+import { NgxValidationMessagesComponent } from '@lagoshny/ngx-validation-messages';
 
 @NgModule({
     imports: [
-        NgxValidationMessagesModule
+      NgxValidationMessagesComponent,
     ]
 })
 export class SomeModule {
@@ -110,7 +169,6 @@ export class SomeModule {
 // ...
 ```
 After that you can use the `NgxValidationMessagesComponent` in your templates, about it see below.
-
 
 ### Usage
 #### 1. Template driven approach (ngModel)
@@ -249,14 +307,14 @@ Also you can override configured error messages for concrete case in standard wa
 
 ## How it works?
 
-In both cases `NgxValidationMessagesComponent` will get validation messages for each applied to form control validator from passed configuration object to `NgxValidationMessagesModule` 
+In both cases `NgxValidationMessagesComponent` will get validation messages for each applied to form control validator from passed configuration object to `provideNgxValidationMessages` 
 
 For example, if you pass configuration like this:
 
 ````typescript
 //...
 
-  NgxValidationMessagesModule.forRoot({
+  provideNgxValidationMessages({
       messages: {
           required: 'This is required filed!',
           minlength: 'Min count symbols are #[requiredLength]'
@@ -281,7 +339,7 @@ For example **maxlength or minlength** standard validators return passed length 
 ## Advanced configuration
 ### Override configured validation messages
 
-If you want to specify a different message for some validator in the concrete HTML template you can use one of the following ways to override configured validation messages passed to `NgxValidationMessagesModule`.
+If you want to specify a different message for some validator in the concrete HTML template you can use one of the following ways to override configured validation messages passed to `provideNgxValidationMessages`.
 
 #### 1. Use `NgxCustomMessageComponent` to override validation message with custom HTML-tag component
 
@@ -333,11 +391,11 @@ The second way to override message is using directive applied to child  `<ngx-va
 
 ### Custom display validation messages styles
 
-If you want to change display default validation message styles, you can set custom CSS classes in the passed configuration for  `NgxValidationMessagesModule` use optional param ***validationMessagesStyle***:
+If you want to change display default validation message styles, you can set custom CSS classes in the passed configuration for  `provideNgxValidationMessages` use optional param ***validationMessagesStyle***:
 ```typescript
 //...
 
-  NgxValidationMessagesModule.forRoot({
+   provideNgxValidationMessages({
       messages: {
           required: 'This is required filed!',
           minlength: 'Min count symbols are #[requiredLength]'
@@ -411,7 +469,7 @@ After that you can define validation message for range validator like this:
 ```typescript
 //...
 
-  NgxValidationMessagesModule.forRoot({
+  provideNgxValidationMessages({
       messages: {
           // You use validator name as range because you return error object with key 'range'
           // also you can use params placeholders returned in error 'range' object
