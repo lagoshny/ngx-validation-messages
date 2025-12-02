@@ -22,7 +22,7 @@
 <br />
 <br />
 
-## ⭐Compatible with Angular 14.x.x-17.x.x versions that uses `Ivy compilation` and `NgModule`/`standalone` components.
+## ⭐Compatible with Angular 14.x.x-21.x.x versions that uses `Ivy compilation` and `NgModule`/`standalone` components.
 
 ### ⚠ If you use old `View Engine` compilation or Angular 6.x.x - 11.x.x you need to use [2.x.x](https://github.com/lagoshny/ngx-validation-messages/tree/lts-view-engine) lib version.
 >
