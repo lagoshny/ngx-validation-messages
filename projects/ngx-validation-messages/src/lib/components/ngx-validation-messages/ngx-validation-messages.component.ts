@@ -1,13 +1,13 @@
-import {AfterViewInit, Component, ContentChildren, ElementRef, Inject, Input, QueryList} from '@angular/core';
-import {NgxValidatorNameDirective} from '../../directivies/ngx-validator-name.directive';
+import { AfterViewInit, Component, ContentChildren, ElementRef, Inject, Input, QueryList } from '@angular/core';
+import { NgxValidatorNameDirective } from '../../directivies/ngx-validator-name.directive';
 import {
   NGX_VALIDATION_MESSAGES_CONFIG,
   NgxValidationMessagesConfig
 } from '../../interface/ngx-validation-messages.config';
-import {NgxValidationMessagesService} from '../../service/ngx-validation-messages.service';
-import {NgxCustomMessageComponent} from '../ngx-custom-message/ngx-custom-message.component';
-import {CommonModule} from '@angular/common';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { NgxValidationMessagesService } from '../../service/ngx-validation-messages.service';
+import { NgxCustomMessageComponent } from '../ngx-custom-message/ngx-custom-message.component';
+import { CommonModule } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 /**
  * Component for displaying validation messages, supports child components of type {@link NgxCustomMessageComponent}
@@ -16,12 +16,12 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 @Component({
   standalone: true,
   selector: 'ngx-validation-messages, [ngxValidationMessages]',
-  templateUrl: './ngx-validation-messages.component.html',
-  styleUrls: ['./ngx-validation-messages.component.scss'],
-  imports: [
-    CommonModule,
-    MatFormFieldModule,
-  ]
+    templateUrl: './ngx-validation-messages.component.html',
+    styleUrls: ['./ngx-validation-messages.component.scss'],
+    imports: [
+        CommonModule,
+        MatFormFieldModule,
+    ]
 })
 export class NgxValidationMessagesComponent implements AfterViewInit {
 
