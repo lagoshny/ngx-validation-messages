@@ -32,11 +32,11 @@
 - Versions that work with old `View Engine` compilation [`2.0.0`-`2.x.x`].
 
 - Versions that work with new `Ivy` compilation [`3.0.0`-`x.x.x`].
-- 
+
 ### 💡 New versioning policy.
 Now lib version matches to Angular supported version.
 
-For example lastest 17.x.x lib version supports for Angular 17.
+For example 17.x.x lib version supports from 14 up to Angular 17.
 
 This library allows you to decrease boilerplate code when handling validations error messages.
 ## Contents
