@@ -1,3 +1,7 @@
+## 21.0.3 (2025-12-21)
+#### Updated lib to standalone
+Added test configuration.
+
 ## 17.1.0 (2025-12-01)
 #### Updated lib to standalone
 Migration from NgModule system to standalone.

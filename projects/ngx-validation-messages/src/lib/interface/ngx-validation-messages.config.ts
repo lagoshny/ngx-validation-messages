@@ -21,3 +21,7 @@ export interface NgxValidationMessagesConfig {
   };
 
 }
+
+export const DEFAULT_CONFIG: NgxValidationMessagesConfig = {
+  messages: {}
+}

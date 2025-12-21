@@ -1,5 +1,6 @@
 import { Provider } from '@angular/core';
 import {
+  DEFAULT_CONFIG,
   NGX_VALIDATION_MESSAGES_CONFIG,
   NgxValidationMessagesConfig
 } from './interface/ngx-validation-messages.config';
@@ -15,6 +16,15 @@ export function provideNgxValidationMessages(config: NgxValidationMessagesConfig
     {
       provide: NGX_VALIDATION_MESSAGES_CONFIG,
       useValue: config
+    }
+  ];
+}
+
+export function provideNgxValidationMessagesTesting(config?: NgxValidationMessagesConfig): Provider[] {
+  return [
+    {
+      provide: NGX_VALIDATION_MESSAGES_CONFIG,
+      useValue: config ?? DEFAULT_CONFIG
     }
   ];
 }
