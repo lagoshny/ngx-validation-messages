@@ -7,6 +7,7 @@ import {
 import { NgxValidationMessagesService } from '../../service/ngx-validation-messages.service';
 import { NgxCustomMessageComponent } from '../ngx-custom-message/ngx-custom-message.component';
 import { CommonModule } from '@angular/common';
+import { MatError } from '@angular/material/input';
 
 /**
  * Component for displaying validation messages, supports child components of type {@link NgxCustomMessageComponent}
@@ -14,14 +15,15 @@ import { CommonModule } from '@angular/common';
  */
 @Component({
   standalone: true,
-  selector: 'ngx-validation-messages',
-    templateUrl: './ngx-validation-messages.component.html',
-    styleUrls: ['./ngx-validation-messages.component.scss'],
-    imports: [
-        CommonModule,
-    ]
+  selector: '[ngxValidationMessages]',
+    templateUrl: './ngx-mat-validation-messages.component.html',
+    styleUrls: ['../ngx-validation-messages/ngx-validation-messages.component.scss'],
+  imports: [
+    CommonModule,
+    MatError,
+  ]
 })
-export class NgxValidationMessagesComponent {
+export class NgxMatValidationMessagesComponent {
 
   /**
    * Form control for which need to show validation messages.

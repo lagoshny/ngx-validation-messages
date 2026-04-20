@@ -9,13 +9,7 @@
 }
 
 @if (errorMessages.length > 0) {
-  <div [ngClass]="ngxValidationConfig?.validationMessagesStyle?.blockClassNames || 'ngx_vm__def_error_block'">
-    @for (message of errorMessages; track message) {
-      <div>
-          <span [ngClass]="ngxValidationConfig?.validationMessagesStyle?.textClassNames || 'ngx_vm__def_error_text'">
-            {{ message }}
-          </span>
-      </div>
-    }
-  </div>
+  @for (message of errorMessages; track message) {
+    <mat-error>{{ message }}</mat-error>
+  }
 }
