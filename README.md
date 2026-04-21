@@ -50,6 +50,7 @@ This library allows you to decrease boilerplate code when handling validations e
     2. [Form driven approach (reactive)](#2-form-driven-approach-reactive)
     3. [Without component as error container](#3-use-without-component-as-error-container)
     4. [With material ui components using mat-error component](#4-with-material-ui-components-using-mat-error-component)
+    5. [I18n with Transloco](#5-i18n-with-transloco)
 3. [How it works?](#How-it-works?)        
 4. [Advanced configuration](#Advanced-configuration)
     1. [Override configured validation messages](#Override-configured-validation-messages)
@@ -298,6 +299,68 @@ And use it with `mat-error`:
  ````
 
 After that if `FormControl` with name `email` will be invalid, then configured error messages for validators applied to `email` will be shown in material ui style.
+
+#### 5. I18n with Transloco
+You can use i18n with Transloco to provide localized messages for validation errors.
+
+Define `ValidationI18nService` to provide localized messages and update the lib configuration after change the language:
+
+```ts
+export const validationMessageKeys: Readonly<Record<string, string>> = {
+  required: 'validation.required',
+  email: 'validation.email'
+};
+
+@Injectable({ providedIn: 'root' })
+export class ValidationI18nService {
+  private readonly transloco = inject(TranslocoService);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly ngxConfig = inject<NgxValidationMessagesConfig>(NGX_VALIDATION_MESSAGES_CONFIG);
+
+  constructor() {
+    this.transloco.langChanges$
+      .pipe(
+        startWith(this.transloco.getActiveLang()),
+        distinctUntilChanged(),
+        switchMap((lang) => this.transloco.load(lang).pipe(map(() => lang))),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((lang) => this.apply(lang));
+  }
+
+  private apply(lang: string): void {
+    for (const [validator, key] of Object.entries(validationMessageKeys)) {
+      this.ngxConfig.messages[validator] = this.transloco.translate(key, {}, lang);
+    }
+  }
+}
+```
+
+And update application configuration:
+
+```ts
+export const validationConfig: NgxValidationMessagesConfig = {
+  messages: {},
+};
+
+export const appConfig: ApplicationConfig = {
+  providers: [
+    provideTransloco({
+      config: {
+        availableLangs: ['en', 'de'],
+        defaultLang: 'en',
+      },
+      loader: TranslocoHttpLoader,
+    }),
+    provideNgxValidationMessages(validationConfig),
+    provideEnvironmentInitializer(() => {
+      inject(ValidationI18nService);
+    }),
+  ],
+};
+```
+
+See more about i18n with Transloco in [ngx-transloco](https://github.com/ngneat/transloco).
 
 ## How it works?
 

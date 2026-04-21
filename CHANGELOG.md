@@ -1,6 +1,7 @@
 ## 21.1.0 (2026-04-21)
 #### Separated material and standalone components
 Separated material and standalone components to allow use lib without material.
+Added docs how to use lib with i18n validation messages.
 
 Break changes:
 - Extracted directive `ngxValidationMessages` to use with material ui `mat-error` component. Now you need to import additionally `NgxMatValidationMessagesDirective` to use `ngxValidationMessages`.
