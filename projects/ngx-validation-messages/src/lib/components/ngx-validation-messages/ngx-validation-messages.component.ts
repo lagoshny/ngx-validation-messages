@@ -12,7 +12,7 @@ import { NgxValidationMessagesBase } from '../base/ngx-validation-messages-base.
   standalone: true,
   selector: 'ngx-validation-messages',
     templateUrl: './ngx-validation-messages.component.html',
-    styleUrls: ['../base/ngx-validation-messages.component.scss'],
+    styleUrls: ['./ngx-validation-messages.component.scss'],
     imports: [
         CommonModule,
     ]

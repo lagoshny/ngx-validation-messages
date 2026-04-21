@@ -1,15 +1,5 @@
-import {
-  ComponentRef,
-  Directive,
-  DoCheck,
-  ElementRef,
-  inject,
-  OnDestroy,
-  Renderer2,
-  ViewContainerRef
-} from '@angular/core';
+import { Directive, DoCheck, ElementRef, inject, OnDestroy, Renderer2 } from '@angular/core';
 import { NgxValidationMessagesBase } from '../base/ngx-validation-messages-base.directive';
-import { NgxMatValidationMessageItemComponent } from './ngx-mat-validation-message-item.component';
 
 /**
  * Attribute directive for Material form fields.
@@ -20,11 +10,10 @@ import { NgxMatValidationMessageItemComponent } from './ngx-mat-validation-messa
   selector: 'mat-error[ngxValidationMessages]'
 })
 export class NgxMatValidationMessagesDirective extends NgxValidationMessagesBase implements DoCheck, OnDestroy {
-  private readonly viewContainerRef = inject(ViewContainerRef);
   private readonly hostElementRef = inject(ElementRef<HTMLElement>);
   private readonly renderer = inject(Renderer2);
   private renderedMessages: string[] = [];
-  private dynamicMessageComponents: ComponentRef<NgxMatValidationMessageItemComponent>[] = [];
+  private dynamicMessageElements: HTMLElement[] = [];
 
   public ngDoCheck(): void {
     if (!this.formControl) {
@@ -48,53 +37,62 @@ export class NgxMatValidationMessagesDirective extends NgxValidationMessagesBase
   private renderMessages(messages: string[]): void {
     const hostElement = this.hostElementRef.nativeElement;
     this.renderer.setProperty(hostElement, 'textContent', messages[0] ?? '');
-    this.syncAdditionalMessageComponents(messages.slice(1));
+    this.syncAdditionalMessageElements(messages.slice(1));
   }
 
-  private syncAdditionalMessageComponents(messages: string[]): void {
-    while (this.dynamicMessageComponents.length < messages.length) {
-      this.dynamicMessageComponents.push(
-        this.viewContainerRef.createComponent(NgxMatValidationMessageItemComponent),
-      );
+  private syncAdditionalMessageElements(messages: string[]): void {
+    while (this.dynamicMessageElements.length < messages.length) {
+      this.dynamicMessageElements.push(this.createDynamicMatErrorElement());
     }
 
-    while (this.dynamicMessageComponents.length > messages.length) {
-      const componentRef = this.dynamicMessageComponents.pop();
-      componentRef?.destroy();
+    while (this.dynamicMessageElements.length > messages.length) {
+      const errorElement = this.dynamicMessageElements.pop();
+      if (errorElement?.parentNode) {
+        this.renderer.removeChild(errorElement.parentNode, errorElement);
+      }
     }
 
     const hostElement = this.hostElementRef.nativeElement;
     const parentElement = hostElement.parentNode;
 
     let previousNode: Node = hostElement;
-    this.dynamicMessageComponents.forEach((componentRef, index) => {
-      componentRef.setInput('message', messages[index]);
-      componentRef.changeDetectorRef.detectChanges();
+    this.dynamicMessageElements.forEach((errorElement, index) => {
+      this.renderer.setProperty(errorElement, 'textContent', messages[index]);
 
       if (!parentElement) {
         return;
       }
 
-      const dynamicHostNode: Node = componentRef.location.nativeElement;
-      this.renderer.insertBefore(parentElement, dynamicHostNode, previousNode.nextSibling);
-      previousNode = dynamicHostNode;
+      this.renderer.insertBefore(parentElement, errorElement, previousNode.nextSibling);
+      previousNode = errorElement;
     });
   }
 
-  private destroyDynamicMessageComponents(): void {
-    this.dynamicMessageComponents.forEach((componentRef) => {
-      componentRef.destroy();
+  private createDynamicMatErrorElement(): HTMLElement {
+    const errorElement = this.renderer.createElement('mat-error') as HTMLElement;
+    const hostClasses = this.hostElementRef.nativeElement.className;
+    if (hostClasses) {
+      this.renderer.setAttribute(errorElement, 'class', hostClasses);
+    }
+    return errorElement;
+  }
+
+  private destroyDynamicMessageElements(): void {
+    this.dynamicMessageElements.forEach((errorElement) => {
+      if (errorElement.parentNode) {
+        this.renderer.removeChild(errorElement.parentNode, errorElement);
+      }
     });
-    this.dynamicMessageComponents = [];
+    this.dynamicMessageElements = [];
   }
 
   private resetRenderedMessages(): void {
-    if (this.renderedMessages.length === 0 && this.dynamicMessageComponents.length === 0) {
+    if (this.renderedMessages.length === 0 && this.dynamicMessageElements.length === 0) {
       return;
     }
     this.renderedMessages = [];
     this.renderer.setProperty(this.hostElementRef.nativeElement, 'textContent', '');
-    this.destroyDynamicMessageComponents();
+    this.destroyDynamicMessageElements();
   }
 
   private isEqualMessageSet(previous: string[], current: string[]): boolean {
