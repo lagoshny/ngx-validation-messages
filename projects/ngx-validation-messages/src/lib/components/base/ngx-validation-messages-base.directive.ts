@@ -1,11 +1,12 @@
 import { ContentChildren, Directive, inject, Input, QueryList } from '@angular/core';
 import { AbstractControl } from '@angular/forms';
-import { NgxCustomMessageComponent, NgxValidatorNameDirective } from 'ngx-validation-messages';
 import {
   NGX_VALIDATION_MESSAGES_CONFIG,
   NgxValidationMessagesConfig
 } from '../../interface/ngx-validation-messages.config';
 import { NgxValidationMessagesService } from '../../service/ngx-validation-messages.service';
+import { NgxValidatorNameDirective } from '../../directivies/ngx-validator-name.directive';
+import { NgxCustomMessageComponent } from '../ngx-custom-message/ngx-custom-message.component';
 
 @Directive()
 export abstract class NgxValidationMessagesBase {
