@@ -277,7 +277,13 @@ If you need simple to display error message in common style as it does `ngx-vali
  ````
 
 #### 4. With material ui components using mat-error component
-It's simple to use `ngx-validation-messages` with material ui `mat-error` component, to do this you need to put `ngxValidationMessages` directive to `mat-error` component like this:
+Import directive:
+
+```typescript
+import { NgxMatValidationMessagesDirective } from '@lagoshny/ngx-validation-messages';
+```
+
+And use it with `mat-error`:
 
   ````html
   <form [formGroup]="taskForm">
@@ -293,21 +299,9 @@ It's simple to use `ngx-validation-messages` with material ui `mat-error` compon
 
 After that if `FormControl` with name `email` will be invalid, then configured error messages for validators applied to `email` will be shown in material ui style.
 
-Also you can override configured error messages for concrete case in standard way:
-
-  ````html
-    <mat-form-field>
-        <input matInput
-               formControlName="email">
-        <mat-error ngxValidationMessages [for]="taskForm.get('email')">
-            <ngx-custom-message forValidator="required">Your new message</ngx-custom-message>
-        </mat-error>
-    </mat-form-field>
- ````
-
 ## How it works?
 
-In both cases `NgxValidationMessagesComponent` will get validation messages for each applied to form control validator from passed configuration object to `provideNgxValidationMessages`
+In both cases `NgxValidationMessagesComponent` and `NgxMatValidationMessagesDirective` will get validation messages for each applied to form control validator from passed configuration object to `provideNgxValidationMessages`
 
 For example, if you pass configuration like this:
 
