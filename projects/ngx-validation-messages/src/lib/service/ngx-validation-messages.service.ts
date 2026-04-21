@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import {
   NGX_VALIDATION_MESSAGES_CONFIG,
   NgxValidationMessagesConfig
@@ -20,8 +20,9 @@ export class NgxValidationMessagesService {
    */
   private paramsRegExp = new RegExp(/#[[a-zA-Z_\\-]*]/);
 
-  constructor(@Inject(NGX_VALIDATION_MESSAGES_CONFIG) private messagesConfig: NgxValidationMessagesConfig) {
-  }
+  private readonly messagesConfig: NgxValidationMessagesConfig = inject(
+    NGX_VALIDATION_MESSAGES_CONFIG,
+  );
 
   /**
    * Get validation message for specified validator.
